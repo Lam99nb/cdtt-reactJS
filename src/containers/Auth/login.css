@@ -1,0 +1,109 @@
+.login-background {
+  height: 100vh;
+  background: linear-gradient(135deg, #22c1c3 0%, #fdbb2d 100%);
+}
+
+.login-background .login-container {
+  width: 400px;
+  margin: auto;
+  border-radius: 19px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 450px;
+}
+
+.login-background .login-container .login-content {
+  padding: 10px;
+}
+
+.login-background .login-container .login-content .text-login {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  padding-top: 10px;
+}
+
+.login-background .login-container .login-content .login-input {
+  margin: 7px 0;
+}
+
+.login-background .login-container .login-content .login-input .custom-input-password {
+  position: relative;
+}
+
+.login-background .login-container .login-content .login-input .custom-input-password i {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.login-background .login-container .login-content .btn-login {
+  width: 100%;
+  margin: 10px 0;
+  height: 37px;
+  border-radius: 15px;
+  font-size: 13px;
+  outline: none;
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #22c1c3 0%, #fdbb2d 100%);
+}
+
+.login-background .login-container .login-content .forgot-password {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.login-background .login-container .login-content .social-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 10px;
+  padding: 0px 144px;
+}
+
+.login-background .login-container .login-content .social-login .facebook {
+  font-size: 30px;
+  color: #494bcb;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: white;
+}
+
+.login-background .login-container .login-content .social-login .google {
+  font-size: 30px;
+  color: red;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: white;
+}
+/*# sourceMappingURL=Login.css.map */

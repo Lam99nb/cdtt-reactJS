@@ -1,0 +1,68 @@
+.product-container {
+  margin: 10px 27px;
+}
+
+.product-container .product-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 26px;
+}
+
+.product-container .product-header .product-header-text {
+  height: 50px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 30px;
+  font-size: 20px;
+}
+
+.product-container .product-header .header-sort {
+  padding-left: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product-container .product-header .header-sort .sort-size button {
+  color: #828282;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.product-container .product-content .product-item {
+  margin: 13px 0;
+}
+
+.product-container .product-content .product-item .product-img {
+  background: url(../../../assets/images/somihoanhithietkeSM12982.jpg);
+  height: 430px;
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.product-container .product-content .product-item .item-title {
+  font-size: 17px;
+  color: #8a8a8f;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.product-container .product-content .product-item .item-price {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+/*# sourceMappingURL=Product.css.map */

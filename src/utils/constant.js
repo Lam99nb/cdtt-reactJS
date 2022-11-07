@@ -1,9 +1,11 @@
 export const path = {
 	HOME: '/',
 	HOMEPAGE: '/home',
-	LOGIN: '/login',
+	LOGIN: '/api/login',
 	LOG_OUT: '/logout',
-	SYSTEM: '/system'
+	SYSTEM: '/system',
+	DETAIL_PRODUCT: '/detail-product/:id',
+	ORDER: '/order'
 };
 
 export const languages = {
@@ -11,10 +13,11 @@ export const languages = {
 	EN: 'en'
 };
 
-export const manageActions = {
-	ADD: 'ADD',
+export const CRUD_ACTIONS = {
+	CREATE: 'CREATE',
 	EDIT: 'EDIT',
-	DELETE: 'DELETE'
+	DELETE: 'DELETE',
+	READ: 'READ'
 };
 
 export const dateFormat = {
@@ -24,4 +27,10 @@ export const dateFormat = {
 export const YesNoObj = {
 	YES: 'Y',
 	NO: 'N'
+};
+
+export const USER_ROLE = {
+	ADMIN: 'R1',
+	STAFF: 'R2',
+	CUSTOMER: 'R3'
 };

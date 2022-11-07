@@ -1,0 +1,137 @@
+.product {
+	margin: 20px 0;
+	.product-img {
+		img {
+			width: 100%;
+		}
+	}
+
+	.product-content {
+		.product-content-header {
+			.name-title {
+				font-size: 26px;
+				text-transform: uppercase;
+				color: #070707;
+				margin-bottom: 15px;
+				font-weight: 500;
+			}
+
+			p {
+				color: #070707;
+			}
+		}
+		.product-price {
+			color: #070707;
+			font-size: 24px;
+			line-height: 54px;
+			font-weight: 500;
+		}
+
+		.add-cart {
+			.pro-size {
+				.select-swap {
+					display: flex;
+				}
+			}
+
+			.size-guide {
+			}
+
+			.qty-addcart {
+				display: flex;
+				padding-top: 10px;
+				.select-qty {
+					display: flex;
+					border: 1px solid #ccc;
+					align-items: center;
+					.number {
+						padding: 5px 18px;
+					}
+					button {
+						border: none;
+						background: #fff;
+					}
+				}
+			}
+			.btn-group {
+				width: 100%;
+				margin-top: 20px;
+				.add-cart-btn {
+					width: calc(50% - 10px);
+					border-radius: none;
+					border: 2px solid #000;
+					color: #070707;
+					margin-right: 20px;
+					text-transform: uppercase;
+					background-color: #fff;
+					padding: 5px 0;
+					font-size: 17px;
+					font-weight: 500;
+				}
+				.buy-now-btn {
+					width: calc(50% - 10px);
+					border-radius: none;
+					color: #fff;
+					text-transform: uppercase;
+					background-color: #000;
+					padding: 5px 0;
+					font-size: 17px;
+					font-weight: 500;
+				}
+			}
+		}
+		.pro--short-desc {
+			padding-top: 14px;
+			p {
+				text-align: justify;
+				color: #666;
+				font-style: normal;
+				font-family: 'Helvetica Neue' !important;
+				font-weight: 400 !important;
+				line-height: 1.75;
+				font-size: 16px;
+			}
+		}
+		.header {
+			font-weight: bold;
+			margin-bottom: 5px;
+			display: block;
+			min-width: 100px;
+			position: relative;
+		}
+	}
+}
+
+#pro-table {
+	border-collapse: collapse;
+	width: 100%;
+
+	.image-pro {
+		height: 78px;
+		width: 56px;
+		object-fit: scale-down;
+	}
+}
+#pro-table td,
+#pro-table th {
+	border-bottom: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+}
+
+#pro-table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.footer-contact {
+	padding-top: 39px;
+	text-align: center;
+	font-family: 'Helvetica Neue' !important;
+
+	p {
+		color: #666;
+		font-style: normal;
+		font-weight: 400 !important;
+	}
+}

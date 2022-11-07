@@ -13,4 +13,9 @@
 .text-red {
   color: #d01a1d !important;
 }
+
 /*# sourceMappingURL=App.css.map */
+
+body {
+  font-family: 'Helvetica Neue'
+}

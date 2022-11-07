@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import Login from '../Auth/Login';
 
 import './HomeHeader.scss';
 class HomeHeader extends Component {
 	render() {
+		const { userInfo } = this.props;
 		return (
 			<React.Fragment>
 				<div className="home-header-container">
@@ -14,9 +18,9 @@ class HomeHeader extends Component {
 						</div>
 						<div className="center-content">
 							<div className="child-content">
-								<div class="dropdown">
+								<div className="dropdown">
 									<button
-										class="btn sub-title dropdown-toggle"
+										className="btn sub-title dropdown-toggle"
 										type="button"
 										id="dropdownMenu2"
 										data-toggle="dropdown"
@@ -25,14 +29,14 @@ class HomeHeader extends Component {
 									>
 										Sản phẩm
 									</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-										<button class="dropdown-item" type="button">
+									<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+										<button className="dropdown-item" type="button">
 											Quần short
 										</button>
-										<button class="dropdown-item" type="button">
+										<button className="dropdown-item" type="button">
 											Đầm
 										</button>
-										<button class="dropdown-item" type="button">
+										<button className="dropdown-item" type="button">
 											Áo sơ mi
 										</button>
 									</div>
@@ -51,11 +55,23 @@ class HomeHeader extends Component {
 						<div className="right-content">
 							<div className="child-content-right">
 								<div className="search">
-									<i className="fas fa-search" />
+									<i className="fas fa-search icon" />
+									<div className="search-input">
+										<div className="input-group  mb-3">
+											<input type="text" className="form-control" placeholder="Tìm kiếm ..." />
+											<div className="">
+												<button className="btn btn-dark" type="button">
+													<i className="fas fa-search" style={{ fontSize: '12px' }} />
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div className="user">
 									<i className="fas fa-user" />
-									Tài khoản
+									<Link to="/api/login">
+										{userInfo && userInfo.firstName ? userInfo.lastName : 'Tài khoản'}
+									</Link>
 								</div>
 								<div className="cart">
 									<i className="fas fa-shopping-bag" />
@@ -76,7 +92,8 @@ class HomeHeader extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.user.isLoggedIn
+		isLoggedIn: state.user.isLoggedIn,
+		userInfo: state.user.userInfo
 	};
 };
 

@@ -15,6 +15,9 @@ import Login from './Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage';
+import Order from './HomePage/Order/Order';
+
+import ChiTietSP from './HomePage/ChiTietSP/ChiTietSP';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 
@@ -45,31 +48,31 @@ class App extends Component {
 		return (
 			<Fragment>
 				<Router history={history}>
-					{/* luu lai lich su tranh goi api nhieu lan */}
 					<div className="main-container">
-						{this.props.isLoggedIn && <Header />}
-						{/* neu login thi hien ra header */}
 						<span className="content-container">
 							<Switch>
 								<Route path={path.HOME} exact component={Home} />
 								<Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
 								<Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
 								<Route path={path.HOMEPAGE} component={HomePage} />
+								<Route path={path.DETAIL_PRODUCT} component={ChiTietSP} />
+								<Route path={path.ORDER} component={Order} />
 							</Switch>
 						</span>
 
 						<ToastContainer
-							className="toast-container"
-							toastClassName="toast-item"
-							bodyClassName="toast-item-body"
-							autoClose={false}
-							hideProgressBar={true}
-							pauseOnHover={false}
-							pauseOnFocusLoss={true}
-							closeOnClick={false}
-							draggable={false}
-							closeButton={<CustomToastCloseButton />}
+							position="top-right"
+							autoClose={5000}
+							hideProgressBar={false}
+							newestOnTop={false}
+							closeOnClick
+							rtl={false}
+							pauseOnFocusLoss
+							draggable
+							pauseOnHover
+							theme="light"
 						/>
+						<ToastContainer />
 					</div>
 				</Router>
 			</Fragment>

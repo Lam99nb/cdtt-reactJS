@@ -1,10 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import * as actions from '../../../store/actions';
+import { withRouter } from 'react-router';
 import './Product.scss';
 class Product extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			arrProducts: ''
+		};
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.topProductRedux !== this.props.topProductRedux) {
+			this.setState({
+				arrProducts: this.props.topProductRedux
+			});
+		}
+	}
+
+	componentDidMount() {
+		this.props.loadTopProducts();
+	}
+	handleViewDetailProduct = (product) => {
+		if (this.props.history) {
+			this.props.history.push(`/detail-product/${product.id}`);
+		}
+	};
 	render() {
+		let arrProducts = this.state.arrProducts;
+
 		return (
 			<div className="product-container">
 				<div className="product-header row">
@@ -97,78 +123,37 @@ class Product extends Component {
 					</div>
 				</div>
 				<div className="product-content row">
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
-					<div className="product-item col-3">
-						<div className="card ">
-							<div className="card-img-top product-img" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="item-title">Sơ mi hoa nhí thiết kế SM12982</h5>
-								<p className="item-price">799.000 VND</p>
-							</div>
-						</div>
-					</div>
+					{arrProducts &&
+						arrProducts.length > 0 &&
+						arrProducts.map((item, index) => {
+							let imageBase64 = '';
+							if (item.image) {
+								imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+							}
+							return (
+								<div
+									className="product-item col-3 "
+									data-aos="zoom-in"
+									key={index}
+									onClick={() => this.handleViewDetailProduct(item)}
+								>
+									<div className="card ">
+										<div
+											className="card-img-top product-img"
+											alt="Card image cap"
+											style={{ backgroundImage: `url(${imageBase64})` }}
+										/>
+										<div className="card-body">
+											<h5 className="item-title">{item.productName}</h5>
+											<p className="item-price">
+												{item.price}
+												<span>₫</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 		);
@@ -177,12 +162,15 @@ class Product extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.user.isLoggedIn
+		isLoggedIn: state.user.isLoggedIn,
+		topProductRedux: state.product.topProduct
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {};
+	return {
+		loadTopProducts: () => dispatch(actions.fetchTopProduct())
+	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));

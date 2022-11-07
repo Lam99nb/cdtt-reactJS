@@ -24,17 +24,24 @@
 		}
 	}
 	.product-content {
+		cursor: pointer;
 		.product-item {
 			margin: 13px 0;
 			.product-img {
-				background: url(../../../assets/images/somihoanhithietkeSM12982.jpg);
 				height: 430px;
 				width: 100%;
 
-				/* Center and scale the image nicely */
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
+
+				transition: transform .2s;
+				margin: 0 auto;
+			}
+			.product-img:hover {
+				-ms-transform: scale(1.15); /* IE 9 */
+				-webkit-transform: scale(1.15); /* Safari 3-8 */
+				transform: scale(1.15);
 			}
 
 			.item-title {

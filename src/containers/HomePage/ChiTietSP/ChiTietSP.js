@@ -13,6 +13,7 @@ import HomeHeader from '../HomeHeader';
 import HomeFooter from '../HomeFooter';
 import { Link, Route } from 'react-router-dom';
 import Order from '../Order/Order';
+import Comment from '../Comment/Comment';
 
 import './ChiTietSP.scss';
 import { HighQualityOutlined, QuickreplyTwoTone } from '@mui/icons-material';
@@ -29,14 +30,14 @@ const style = {
 	boxShadow: 24,
 	p: 4
 };
+
 class ChiTietSP extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			open: false,
-			count: 0,
+			count: 1,
 			detailProduct: {}
-			// qty: 0
 		};
 	}
 
@@ -71,13 +72,23 @@ class ChiTietSP extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {}
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.count !== this.state.count) {
+			var setOrder = {
+				image: this.state.detailProduct.image,
+				productName: this.state.detailProduct.productName,
+				quantity: this.state.count,
+				price: this.state.detailProduct.price
+			};
+			localStorage.setItem('setOrder', JSON.stringify(setOrder));
+		}
+	}
+
 	render() {
 		let count = this.state.count;
-		let qty = this.state.qty;
 
-		console.log('check slg', count);
 		let { detailProduct } = this.state;
+		// let currentURL = window.location.href;
 
 		return (
 			<React.Fragment>
@@ -85,11 +96,11 @@ class ChiTietSP extends Component {
 				<div className="product container">
 					<div className="row">
 						<div
-							className="product-img col-7"
+							className="product-img col-5"
 							style={{
 								backgroundImage: `url(${detailProduct && detailProduct.image
 									? detailProduct.image
-									: ''})`
+									: ''}) `
 							}}
 						/>
 						<div className="product-content col-5">
@@ -250,8 +261,6 @@ class ChiTietSP extends Component {
 											Mua ngay
 										</Link>
 									</button>
-
-									{/* <Route path="/order" component={Order} /> */}
 								</div>
 							</form>
 
@@ -270,6 +279,9 @@ class ChiTietSP extends Component {
 								</p>
 							</div>
 						</div>
+						<Comment
+						// dataHref={currentURL} width={'100%'}
+						/>
 					</div>
 				</div>
 				<HomeFooter />

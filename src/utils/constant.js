@@ -5,7 +5,9 @@ export const path = {
 	LOG_OUT: '/logout',
 	SYSTEM: '/system',
 	DETAIL_PRODUCT: '/detail-product/:id',
-	ORDER: '/order'
+	ORDER: '/order',
+	ABOUT: '/about',
+	CART: '/cart'
 };
 
 export const languages = {

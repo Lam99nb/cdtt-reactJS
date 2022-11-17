@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { ConnectedRouter as Router } from 'connected-react-router';
+// import { ConnectedRouter as Router } from 'connected-react-router';
+import { Router } from 'react-router';
+
 import { history } from '../redux';
 import { ToastContainer } from 'react-toastify';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
@@ -16,6 +18,8 @@ import Header from './Header/Header';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage';
 import Order from './HomePage/Order/Order';
+import About from './HomePage/About/About';
+import Cart from './HomePage/Cart/Cart';
 
 import ChiTietSP from './HomePage/ChiTietSP/ChiTietSP';
 
@@ -57,6 +61,8 @@ class App extends Component {
 								<Route path={path.HOMEPAGE} component={HomePage} />
 								<Route path={path.DETAIL_PRODUCT} component={ChiTietSP} />
 								<Route path={path.ORDER} component={Order} />
+								<Route path={path.ABOUT} component={About} />
+								<Route path={path.CART} component={Cart} />
 							</Switch>
 						</span>
 

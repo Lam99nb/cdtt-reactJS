@@ -1,5 +1,5 @@
 import axios from '../axios';
-
+import querystring from 'querystring';
 const handleLoginAPI = (email, password) => {
 	return axios.post('/api/login', { email, password });
 };
@@ -26,4 +26,27 @@ const editUserService = (inputData) => {
 const getAllCodeService = (inputType) => {
 	return axios.get(`/api/get-all-code?type=${inputType}`);
 };
-export { handleLoginAPI, getAllUsers, createNewUserService, deleteUserService, editUserService, getAllCodeService };
+
+const sendOrderEmailService = async (inputEmail) => {
+	// return axios.post('/api/send-email', inputEmail);
+
+	var bodyFormData = new FormData();
+	bodyFormData.append('email', inputEmail);
+	let res = await axios({
+		method: 'post',
+		url: '/api/send-email',
+		data: querystring.stringify({ email: inputEmail }),
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+	});
+	console.log(res);
+	return await res;
+};
+export {
+	handleLoginAPI,
+	getAllUsers,
+	createNewUserService,
+	deleteUserService,
+	editUserService,
+	getAllCodeService,
+	sendOrderEmailService
+};

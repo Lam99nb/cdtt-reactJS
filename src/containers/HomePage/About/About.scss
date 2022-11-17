@@ -1,0 +1,55 @@
+.about {
+	margin-top: 2.5em;
+
+	.item {
+		padding: 0 65px;
+		text-align: justify;
+
+		font-family: 'Helvetica Neue' !important;
+		margin: 30px 0;
+
+		.about-header {
+			color: #000;
+			font-size: 32px;
+			line-height: 54px;
+			font-weight: 600;
+		}
+		.about-content {
+			color: #666;
+			font-style: normal;
+			font-weight: 400 !important;
+			line-height: 1.75;
+			font-size: 16px;
+		}
+		.about-img {
+			background: url(../../../assets/images/image_gioithieu_1.webp) center center no-repeat;
+			height: 100%;
+			background-size: cover;
+			background-position: inherit;
+		}
+		.about-img2 {
+			background: url(../../../assets/images/image_item_gioithieu_1.webp) center center no-repeat;
+			height: 769px;
+			background-size: cover;
+			background-position: inherit;
+		}
+		.about-img3 {
+			background: url(../../../assets/images/image_item_gioithieu_2.webp) center center no-repeat;
+			height: 769px;
+			background-size: cover;
+			background-position: inherit;
+		}
+		.about-img4 {
+			background: url(../../../assets/images/image_item_gioithieu_3.webp) center center no-repeat;
+			height: 769px;
+			background-size: cover;
+			background-position: inherit;
+		}
+		.about-title {
+			font-size: 14px;
+			line-height: 27px;
+			margin-top: 30px;
+			font-weight: 700;
+		}
+	}
+}

@@ -12,16 +12,29 @@ import './Order.scss';
 import img_pro from '../../../assets/images/somihoanhithietkeSM12982.jpg';
 import { Link, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { sendOrderEmailService } from '../../../services/userService';
 
 class Order extends Component {
 	constructor(props) {
+		let item = JSON.parse(localStorage.getItem('setOrder'));
+
 		super(props);
 		this.state = {
-			activeStep: 0
+			activeStep: 0,
+			data: 0,
+			item: item,
+
+			customerName: '',
+			customerPhone: '',
+			customerAddress: '',
+			customerEmail: '',
+			paymentMethod: 'Thanh toán khi nhận hàng'
 		};
 	}
 
-	async componentDidMount() {}
+	async componentDidMount() {
+		// console.log('check data from local', JSON.parse(localStorage.getItem('setOrder')));
+	}
 	componentDidUpdate(prevProps, prevState, snapshot) {}
 
 	handleNext = () => {
@@ -38,9 +51,38 @@ class Order extends Component {
 		});
 	};
 
-	clickOrder = () => {
-		toast.info('Đặt hàng thành công! ');
+	clickOrder = async () => {
+		try {
+			let data = await sendOrderEmailService(this.state.customerEmail);
+			if (data && data.errCode === 0) {
+				toast.info('Đặt hàng thành công! ');
+			} else {
+				toast.info('Đặt hàng không thành công');
+			}
+		} catch (e) {
+			console.log(e);
+		}
 	};
+	handleOnChangeInput = (event, id) => {
+		let valueInput = event.target.value;
+		let stateCopy = { ...this.state };
+		stateCopy[id] = valueInput;
+		this.setState({
+			...stateCopy
+		});
+	};
+
+	handleOnClickInput = () => {
+		this.setState({
+			paymentMethod: 'Thanh toán khi nhận hàng'
+		});
+	};
+	handleOnClickInput2 = () => {
+		this.setState({
+			paymentMethod: 'Thanh toán bang thẻ'
+		});
+	};
+
 	render() {
 		const steps = [
 			{
@@ -52,6 +94,9 @@ class Order extends Component {
 		];
 		const maxSteps = steps.length;
 		let activeStep = this.state.activeStep;
+		let item = this.state.item;
+		console.log('check state order', this.state);
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -78,7 +123,7 @@ class Order extends Component {
 											<div className="trans">
 												<h6>Phương thức vận chuyển</h6>
 												<div className="trans-group">
-													<input type="radio" />
+													<input type="radio" checked />
 													<label for="ttnh">
 														Giao hàng tận nơi (phí vận chuyển tạm tính)<span> 30.000₫</span>
 													</label>
@@ -87,19 +132,40 @@ class Order extends Component {
 											<div className="payment">
 												<h6>Phương thức thanh toán</h6>
 												<div className="trans-group">
-													<input type="radio" name="fav_language" />
+													<input
+														type="radio"
+														name="fav_language"
+														value={this.state.paymentMethod}
+														onClick={() => this.handleOnClickInput()}
+													/>
 
 													<label for="ttnh">Thanh toán khi nhận hàng</label>
 												</div>
 												<div className="trans-group">
-													<input type="radio" name="fav_language" />
+													<input
+														type="radio"
+														name="fav_language"
+														value={this.state.paymentMethod}
+														onClick={() => this.handleOnClickInput2()}
+													/>
 
 													<label for="ttmm">Thanh toán thẻ ngân hàng</label>
 												</div>
 											</div>
 										</div>
 									) : (
-										<div className="">
+										<form className="form">
+											<TextField
+												id="email"
+												label="Email"
+												variant="outlined"
+												margin="dense"
+												sx={{
+													width: 1
+												}}
+												value={this.state.customerEmail}
+												onChange={(event) => this.handleOnChangeInput(event, 'customerEmail')}
+											/>
 											<TextField
 												id="firstName"
 												label="Họ và tên"
@@ -108,26 +174,32 @@ class Order extends Component {
 												sx={{
 													width: 1
 												}}
+												value={this.state.customerName}
+												onChange={(event) => this.handleOnChangeInput(event, 'customerName')}
 											/>
 											<TextField
-												id="firstName"
+												id="address"
 												label="Địa chỉ"
 												variant="outlined"
 												margin="dense"
 												sx={{
 													width: 1
 												}}
+												value={this.state.customerAddress}
+												onChange={(event) => this.handleOnChangeInput(event, 'customerAddress')}
 											/>
 											<TextField
-												id="firstName"
+												id="phoneNumber"
 												label="Số điện thoại"
 												variant="outlined"
 												margin="dense"
 												sx={{
 													width: 1
 												}}
+												value={this.state.customerPhone}
+												onChange={(event) => this.handleOnChangeInput(event, 'customerPhone')}
 											/>
-										</div>
+										</form>
 									)}
 								</Box>
 								<MobileStepper
@@ -169,20 +241,12 @@ class Order extends Component {
 								</tr>
 								<tr>
 									<td>
-										<img class="image-pro" src={img_pro} />
+										<img class="image-pro" src={item.image} />
 									</td>
 
-									<td> {this.props.detailProduct.productName}</td>
-									<td>{this.props.soLuong}</td>
-									<td>1.000.000</td>
-								</tr>
-								<tr>
-									<td>
-										<img class="image-pro" src={img_pro} />
-									</td>
-									<td> đầm hoa vàng</td>
-									<td>1</td>
-									<td>1.000.000</td>
+									<td> {item.productName}</td>
+									<td>{item.quantity} </td>
+									<td>{item.price}</td>
 								</tr>
 							</table>
 						</div>
@@ -190,23 +254,19 @@ class Order extends Component {
 							<table id="pro-table">
 								<tr>
 									<td>Tạm tính</td>
-									<td>2.000.000</td>
+									<td>{item.price * `${item.quantity}`}</td>
 								</tr>
 								<tr>
 									<td style={{ fontWeight: 'bold' }}>Tổng tiền</td>
-									<td style={{ fontWeight: 'bold' }}>2.030.000</td>
+									<td style={{ fontWeight: 'bold' }}>{item.price * `${item.quantity}` + 30000}</td>
 								</tr>
 							</table>
 						</div>
-						<Link to="/home">
-							<button
-								type="button"
-								class="btn btn-info btn-lg btn-oder"
-								onClick={() => this.clickOrder()}
-							>
-								Đặt hàng
-							</button>
-						</Link>
+						{/* <Link to="/home"> */}
+						<button type="button" class="btn btn-info btn-lg btn-oder" onClick={() => this.clickOrder()}>
+							Đặt hàng
+						</button>
+						{/* </Link> */}
 					</div>
 				</div>
 			</div>

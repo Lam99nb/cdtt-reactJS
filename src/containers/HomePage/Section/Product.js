@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as actions from '../../../store/actions';
 import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
+
 import './Product.scss';
 class Product extends Component {
 	constructor(props) {

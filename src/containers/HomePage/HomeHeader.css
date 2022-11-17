@@ -14,7 +14,7 @@
 
 .home-header-container .home-header-content .left-content {
   width: 25%;
-  background: url(../../assets/images/logo.jpg) center center no-repeat;
+  background: url(../../assets/images/logoSam.png) center center no-repeat;
   cursor: pointer;
 }
 
@@ -24,11 +24,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 135px;
 }
 
@@ -38,8 +38,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
 }
 
@@ -47,7 +47,7 @@
   font-size: 20px;
   font-weight: 600;
   -webkit-animation: appear 0.3s ease 0s;
-          animation: appear 0.3s ease 0s;
+  animation: appear 0.3s ease 0s;
   line-height: 0px;
 }
 
@@ -57,8 +57,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .home-header-container .home-header-content .right-content .child-content-right {
@@ -66,11 +66,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -90,8 +90,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -106,8 +106,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -123,8 +123,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-left: 30px;
   border-bottom: 1px solid #efeff4;
   font-size: 20px;
@@ -134,4 +134,5 @@
   background: url(../../assets/images/backgroundHeader.webp) center center no-repeat;
   height: 759px;
 }
+
 /*# sourceMappingURL=HomeHeader.css.map */

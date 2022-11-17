@@ -1,0 +1,83 @@
+.cart-container {
+	font-family: 'Helvetica Neue' !important;
+	margin-top: 50px;
+	#product-table {
+		width: 100%;
+		border-collapse: collapse;
+		.image-product-cart {
+			width: 30%;
+			.image-product {
+				height: 256px;
+				width: 184px;
+				object-fit: cover;
+			}
+		}
+
+		.select-qty {
+			display: flex;
+			border: 1px solid #ccc;
+			align-items: center;
+			width: fit-content;
+			.number {
+				padding: 0px 18px;
+				font-weight: normal;
+				font-size: 21px;
+			}
+			button {
+				border: none;
+				background: #fff;
+				padding: 0 10px;
+			}
+		}
+		.delete-btn {
+			text-transform: capitalize;
+			font-weight: normal;
+			font-size: small;
+			cursor: pointer;
+		}
+	}
+	#product-table td {
+		border-bottom: 1px solid rgb(241, 239, 239);
+		// text-align: center;
+		text-transform: uppercase;
+		padding-top: 31px;
+		padding-bottom: 31px;
+		font-weight: 600;
+		font-size: 22px;
+	}
+
+	#product-table th {
+		padding-top: 20px;
+		border-bottom: 1px solid rgb(241, 239, 239);
+		border-top: 1px solid rgb(241, 239, 239);
+
+		font-weight: normal;
+		padding-bottom: 20px;
+	}
+
+	.cart-row {
+		display: flex;
+		justify-content: space-between;
+		padding: 30px 0;
+		.cart-note {
+			width: 66%;
+		}
+		.btn-cart {
+			.cart-price {
+				font-weight: 600;
+				font-size: 22px;
+				padding-left: 14px;
+			}
+			.btn-update,
+			.btn-pay {
+				background: #000;
+				color: #fff;
+				text-transform: uppercase;
+				font-weight: 600;
+				border-radius: 21px;
+				padding: 7px 20px;
+				margin-left: 4px;
+			}
+		}
+	}
+}

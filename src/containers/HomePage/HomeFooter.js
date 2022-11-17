@@ -7,7 +7,7 @@ import './HomeFooter.scss';
 class HomeFooter extends Component {
 	render() {
 		return (
-			<div>
+			<React.Fragment>
 				<div className="news">
 					<h2 className="news-title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
 						ĐĂNG KÝ BẢN TIN
@@ -17,7 +17,12 @@ class HomeFooter extends Component {
 					</p>
 					<div className="input-inf">
 						<div className="input-group input-group-lg mb-3">
-							<input type="email" className="form-control" placeholder="Vui lòng nhập email" />
+							<input
+								type="email"
+								className="form-control"
+								placeholder="Vui lòng nhập email"
+								style={{ border: 'none' }}
+							/>
 							<div className="">
 								<button className="btn btn-dark btn-lg" type="button">
 									Đăng ký
@@ -67,57 +72,64 @@ class HomeFooter extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="container-fluid">
-					<div className="main-footer row">
-						<div className="col-4 pl-5 footer-add " data-aos="fade-up-right">
-							<h5>NEM FASHION - THỜI TRANG CÔNG SỞ</h5>
+				<div className="main-footer ">
+					<div className="container-fluid">
+						<div className="row">
+							<div className="col-4 pl-5 footer-add " data-aos="fade-up-right">
+								<h5>SAM FASHION - THỜI TRANG CÔNG SỞ</h5>
 
-							<ul>
-								<li>Công ty TNHH Dịch vụ và Thương mại An Thành.</li>
-								<li>Số ĐKKD 0107861393, Sở KHĐT Tp. Hà Nội cấp ngày 04/10/2017</li>
-								<li>
-									Địa chỉ: Phòng 1002, tầng 10, Tòa nhà NEM số 545 đường Nguyễn Văn Cừ, P. Gia Thụy,
-									Q. Long Biên, Hà Nội
-								</li>
-								<li>Chăm sóc khách hàng: 0243.9388512 Mua hàng online: 0246.2909098</li>
-								<li>Email: nemcskh@stripe-vn.com</li>
-							</ul>
-						</div>
-						<div className="col-3 footer-intro" data-aos="fade-up" data-aos-duration="3000">
-							<h5 />
-							<ul>
-								<li>Giới thiệu</li>
-								<li>Triết lý kinh doanh tại NEM Fashion</li>
-								<li>NEM's Blog</li>
-								<li>Tuyển dụng</li>
-								<li>Hệ thống showroom</li>
-								<li>Liên hệ</li>
-							</ul>
-						</div>
-						<div className="col-3 footer-policy" data-aos="fade-up" data-aos-duration="3000">
-							<h5 />
-							<ul>
-								<li>Chính sách giao nhận - Vận chuyển</li>
-								<li>Hướng dẫn thanh toán</li>
-								<li>Tra cứu đơn hàng</li>
-								<li>Hướng dẫn chọn Size</li>
-								<li>Quy định đổi hàng</li>
-								<li>Quy định bảo hành và sửa chữa</li>
-								<li>Khách hàng thân thiết</li>
-							</ul>
-						</div>
-						<div className="col-2 pr-5 footer-payment" data-aos="fade-up-left">
-							<h5 />
-							<ul>
-								<li>Phương thức thanh toán </li>
-								<li>
-									<img src={logo_bct} />
-								</li>
-							</ul>
+								<ul>
+									<li>Công ty TNHH Dịch vụ và Thương mại An Thành.</li>
+									<li>Số ĐKKD 0107861393, Sở KHĐT Tp. Hà Nội cấp ngày 04/10/2017</li>
+									<li>
+										Địa chỉ: Phòng 1002, tầng 10, Tòa nhà SAM số 545 đường Nguyễn Văn Cừ, P. Gia
+										Thụy, Q. Long Biên, Hà Nội
+									</li>
+									<li>Chăm sóc khách hàng: 0243.9388512 Mua hàng online: 0246.2909098</li>
+									<li>Email: samcskh@stripe-vn.com</li>
+								</ul>
+							</div>
+							<div className="col-2 footer-intro" data-aos="fade-up" data-aos-duration="3000">
+								<h5 />
+								<ul>
+									<li>Giới thiệu</li>
+									<li>Triết lý kinh doanh tại SAM Fashion</li>
+									<li>SAM's Blog</li>
+									<li>Tuyển dụng</li>
+									<li>Hệ thống showroom</li>
+									<li>Liên hệ</li>
+								</ul>
+							</div>
+
+							<div className="col-3 footer-policy" data-aos="fade-up" data-aos-duration="3000">
+								<h5 />
+								<ul>
+									<li>Chính sách giao nhận - Vận chuyển</li>
+									<li>Hướng dẫn thanh toán</li>
+									<li>Tra cứu đơn hàng</li>
+									<li>Hướng dẫn chọn Size</li>
+									<li>Quy định đổi hàng</li>
+									<li>Quy định bảo hành và sửa chữa</li>
+									<li>Khách hàng thân thiết</li>
+								</ul>
+							</div>
+							<div
+								className="col-2  footer-payment"
+								data-aos="fade-up-left"
+								style={{ paddingRight: '0' }}
+							>
+								<h5 />
+								<ul>
+									<li>Phương thức thanh toán </li>
+									<li>
+										<img src={logo_bct} />
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

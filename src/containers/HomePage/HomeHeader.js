@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from '../Auth/Login';
+import logo from '../../../src/assets/images/logoSam.png';
+import About from './About/About';
 
 import './HomeHeader.scss';
 class HomeHeader extends Component {
 	render() {
 		const { userInfo } = this.props;
+		console.log(userInfo);
 		return (
-			<React.Fragment>
+			<div>
 				<div className="home-header-container">
 					<div className="home-header-content">
 						<div className="left-content">
-							<div className="header-logo" />
+							<Link to="/home">
+								<div className="header-logo">
+									<img src={logo} />
+								</div>
+							</Link>
 						</div>
 						<div className="center-content">
 							<div className="child-content">
@@ -46,10 +53,12 @@ class HomeHeader extends Component {
 								<div className="sub-title">Sản phẩm mới</div>
 							</div>
 							<div className="child-content">
-								<div className="sub-title">NEM Online</div>
+								<div className="sub-title">Sales</div>
 							</div>
 							<div className="child-content">
-								<div className="sub-title">Sales</div>
+								<Link to="/about">
+									<div className="sub-title">Giới thiệu</div>
+								</Link>
 							</div>
 						</div>
 						<div className="right-content">
@@ -69,23 +78,23 @@ class HomeHeader extends Component {
 								</div>
 								<div className="user">
 									<i className="fas fa-user" />
-									<Link to="/api/login">
-										{userInfo && userInfo.firstName ? userInfo.lastName : 'Tài khoản'}
-									</Link>
+									{userInfo && userInfo.firstName ? (
+										userInfo.lastName + ' ' + userInfo.firstName
+									) : (
+										<Link to="/api/login">Tài khoản</Link>
+									)}
 								</div>
 								<div className="cart">
 									<i className="fas fa-shopping-bag" />
-									<div className="sub">Giỏ hàng</div>
+									<Link to="/cart">
+										<div className="sub">Giỏ hàng</div>
+									</Link>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="home-header-banner">
-					<div className="banner-text">Trang chu</div>
-					<div className="banner-img" />
-				</div>
-			</React.Fragment>
+			</div>
 		);
 	}
 }

@@ -7,6 +7,7 @@ import HomeFooter from './HomeFooter';
 import { path } from '../../utils';
 
 import Product from './Section/Product';
+import Slider from './Slider/Slider';
 import ChiTietSP from './ChiTietSP/ChiTietSP';
 
 class HomePage extends Component {
@@ -14,11 +15,12 @@ class HomePage extends Component {
 		const { isLoggedIn } = this.props;
 
 		return (
-			<BrowserRouter>
+			<React.Fragment>
 				<HomeHeader />
+				<Slider />
 				<Product />
 				<HomeFooter />
-			</BrowserRouter>
+			</React.Fragment>
 		);
 	}
 }

@@ -15,6 +15,8 @@ import { Link, Route } from 'react-router-dom';
 import Order from '../Order/Order';
 import Comment from '../Comment/Comment';
 
+import { KEY_PRODUCT_CART } from '../../../utils/constant';
+
 import './ChiTietSP.scss';
 import { HighQualityOutlined, QuickreplyTwoTone } from '@mui/icons-material';
 
@@ -37,7 +39,9 @@ class ChiTietSP extends Component {
 		this.state = {
 			open: false,
 			count: 1,
-			detailProduct: {}
+			detailProduct: {},
+			sizeRadio: '',
+			colorRadio: '',
 		};
 	}
 
@@ -84,6 +88,42 @@ class ChiTietSP extends Component {
 		}
 	}
 
+	onChangeSizeRadio = e => {
+		e.preventDefault();
+		this.setState({
+			sizeRadio: e.target.value
+		})
+	}
+	onChangeColorRadio = e => {
+		e.preventDefault();
+		this.setState({
+			colorRadio: e.target.value
+		})
+	}
+
+	addProdutToCart = () => {
+		const { detailProduct } = this.state;
+
+		detailProduct.size = this.state.sizeRadio;
+		detailProduct.color = this.state.colorRadio;
+		detailProduct.amount = this.state.count;
+
+		const productInCartString = localStorage.getItem(KEY_PRODUCT_CART);
+		let productInCart = productInCartString ? JSON.parse(productInCartString) : [];
+
+		let listItem = productInCart;
+		if (productInCart && productInCart.find(x => x.id === detailProduct.id)) {
+			// san pham da co trong gio hang 
+			// => cap nhat thong tin moi
+			productInCart = productInCart.map(x => x.id === detailProduct.id ? detailProduct : x)
+			listItem = productInCart;
+		} else {
+			listItem.push(detailProduct)
+		}
+		localStorage.setItem(KEY_PRODUCT_CART, JSON.stringify(listItem));
+		alert('Thêm vào giỏ hàng thành công!');	
+	}
+
 	render() {
 		let count = this.state.count;
 
@@ -122,6 +162,7 @@ class ChiTietSP extends Component {
 											row
 											aria-labelledby="demo-row-radio-buttons-group-label"
 											name="row-radio-buttons-group"
+											onChange={this.onChangeSizeRadio}
 										>
 											<FormControlLabel value="sizeS" control={<Radio />} label="Size S" />
 											<FormControlLabel value="sizeM" control={<Radio />} label="Size M" />
@@ -140,6 +181,7 @@ class ChiTietSP extends Component {
 											row
 											aria-labelledby="demo-row-radio-buttons-group-label"
 											name="row-radio-buttons-group"
+											onChange={this.onChangeColorRadio}
 										>
 											<FormControlLabel value="white" control={<Radio />} label="Trắng" />
 											<FormControlLabel value="black" control={<Radio />} label="Đen" />
@@ -240,7 +282,7 @@ class ChiTietSP extends Component {
 												-
 											</button>
 										</div>
-
+										{/* thay bang input number */}
 										<div className="number">{count}</div>
 										<div>
 											<button onClick={() => this.incrementCount()} type="button">
@@ -250,8 +292,11 @@ class ChiTietSP extends Component {
 									</div>
 								</div>
 								<div className="btn-group">
-									<button className="add-cart-btn  ">Thêm vào giỏ</button>
-
+									<button
+										className="add-cart-btn"
+										type='button'
+										onClick={this.addProdutToCart}
+									>Thêm vào giỏ</button>
 									<button
 										className="buy-now-btn"
 										// onClick={() => this.changeState()}
@@ -279,9 +324,9 @@ class ChiTietSP extends Component {
 								</p>
 							</div>
 						</div>
-						<Comment
+						{/* <Comment
 						// dataHref={currentURL} width={'100%'}
-						/>
+						/> */}
 					</div>
 				</div>
 				<HomeFooter />

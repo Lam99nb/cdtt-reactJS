@@ -36,3 +36,5 @@ export const USER_ROLE = {
 	STAFF: 'R2',
 	CUSTOMER: 'R3'
 };
+
+export const KEY_PRODUCT_CART = 'cart_product';

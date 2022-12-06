@@ -8,14 +8,14 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import './Order.scss';
+import './BuyNow.scss';
 import img_pro from '../../../assets/images/somihoanhithietkeSM12982.jpg';
 import { Link, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { sendOrderEmailService } from '../../../services/userService';
 import { KEY_PRODUCT_CART } from '../../../utils/constant';
 
-class Order extends Component {
+class BuyNow extends Component {
 	constructor(props) {
 		let item = JSON.parse(localStorage.getItem('setOrder'));
 
@@ -30,23 +30,11 @@ class Order extends Component {
 			customerAddress: '',
 			customerEmail: '',
 			paymentMethod: 'Thanh toán khi nhận hàng',
-			listProduct: [],
-			total: 0
+			listProduct: []
 		};
 	}
 
-	async componentDidMount() {
-		let listProduct = JSON.parse(localStorage.getItem(KEY_PRODUCT_CART) || '[]');
-		let total = this.state.total;
-
-		listProduct.map((x) => {
-			total = total + x.amount * x.price;
-		});
-		this.setState({
-			listProduct: listProduct,
-			total: total
-		});
-	}
+	async componentDidMount() {}
 	componentDidUpdate(prevProps, prevState, snapshot) {}
 
 	handleNext = () => {
@@ -107,7 +95,7 @@ class Order extends Component {
 		const maxSteps = steps.length;
 		let activeStep = this.state.activeStep;
 		let item = this.state.item;
-		console.log('check state order', this.state);
+		// console.log('check state order', this.state.total);
 
 		return (
 			<div className="container">
@@ -253,24 +241,20 @@ class Order extends Component {
 									<th>Số lượng</th>
 									<th>Giá</th>
 								</tr>
-								{this.state.listProduct.map((x) => {
-									return (
-										<tr>
-											<td>
-												<img class="image-pro" src={x.image} />
-											</td>
+								<tr>
+									<td>
+										<img class="image-pro" src={item.image} />
+									</td>
 
-											<td> {x.productName}</td>
-											<td>{x.amount} </td>
-											<td>
-												{x.price.toLocaleString('en-US', {
-													style: 'currency',
-													currency: 'VND'
-												})}
-											</td>
-										</tr>
-									);
-								})}
+									<td> {item.productName}</td>
+									<td>{item.quantity}</td>
+									<td>
+										{item.price.toLocaleString('en-US', {
+											style: 'currency',
+											currency: 'VND'
+										})}
+									</td>
+								</tr>
 							</table>
 						</div>
 						<div className="total-table">
@@ -278,8 +262,7 @@ class Order extends Component {
 								<tr>
 									<td>Tạm tính</td>
 									<td>
-										{/* {item.price * `${item.quantity}`} */}
-										{this.state.total.toLocaleString('en-US', {
+										{(item.price * `${item.quantity}`).toLocaleString('en-US', {
 											style: 'currency',
 											currency: 'VND'
 										})}
@@ -288,7 +271,7 @@ class Order extends Component {
 								<tr>
 									<td style={{ fontWeight: 'bold' }}>Tổng tiền</td>
 									<td style={{ fontWeight: 'bold' }}>
-										{(this.state.total + 30000).toLocaleString('en-US', {
+										{(item.price * `${item.quantity}` + 30000).toLocaleString('en-US', {
 											style: 'currency',
 											currency: 'VND'
 										})}
@@ -318,4 +301,4 @@ const mapDispatchToProps = (dispatch) => {
 	return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Order);
+export default connect(mapStateToProps, mapDispatchToProps)(BuyNow);

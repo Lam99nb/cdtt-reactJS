@@ -41,6 +41,10 @@ const sendOrderEmailService = async (inputEmail) => {
 	console.log(res);
 	return await res;
 };
+
+const getAllBills = (inputId) => {
+	return axios.get(`/api/get-all-bill?id=${inputId}`);
+};
 export {
 	handleLoginAPI,
 	getAllUsers,
@@ -48,5 +52,6 @@ export {
 	deleteUserService,
 	editUserService,
 	getAllCodeService,
-	sendOrderEmailService
+	sendOrderEmailService,
+	getAllBills
 };

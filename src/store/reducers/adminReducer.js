@@ -1,10 +1,10 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-	// isLoadingGenders: false,
 	genders: [],
 	roles: [],
-	users: []
+	users: [],
+	bills: []
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -45,7 +45,18 @@ const adminReducer = (state = initialState, action) => {
 			return {
 				...state
 			};
+		case actionTypes.FETCH_ALL_BILL_SUCCESS:
+			state.bills = action.bills;
 
+			return {
+				...state
+			};
+		case actionTypes.FETCH_ALL_BILL_FAILED:
+			state.bills = [];
+
+			return {
+				...state
+			};
 		default:
 			return state;
 	}

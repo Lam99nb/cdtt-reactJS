@@ -9,14 +9,13 @@
     "menu": {
         "system": {
             "header": "Hệ thống",
-            "user-manage": "Quản lý người dùng",
+            "user-manage": "Danh sách người dùng",
             "product-manage": "Quản lý sản phẩm",
-            "admin-manage": "Quản lý Admin",
+            "admin-manage": "Quản lý người dùng",
+            "bill" : "Hoá đơn",
+            "manage-bill": "Quản lý hoá đơn"
 
-            "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản",
-            "system-parameter": {
-                "header": "Tham số hệ thống"
-            }
+            
         }
     }
 

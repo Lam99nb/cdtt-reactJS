@@ -4,8 +4,10 @@ import {
 	createNewUserService,
 	getAllUsers,
 	deleteUserService,
-	editUserService
+	editUserService,
+	getAllBills
 } from '../../services/userService';
+
 import { toast } from 'react-toastify';
 export const fetchGenderStart = () => {
 	return async (dispatch, getState) => {
@@ -167,4 +169,32 @@ export const editUserSuccess = () => ({
 
 export const editUserFailed = () => ({
 	type: actionTypes.EDIT_USER_FAILED
+});
+
+export const fetchAllBillsStart = () => {
+	return async (dispatch, getState) => {
+		try {
+			let res = await getAllBills('ALL');
+			if (res && res.errCode === 0) {
+				dispatch(fetchAllBillsSuccess(res.bills.reverse()));
+			} else {
+				toast.error('Fetch hoá đơn không thành công!');
+				dispatch(fetchAllBillsFailed());
+			}
+		} catch (e) {
+			toast.error('Fetch hoá đơn không thành công!');
+
+			dispatch(fetchAllBillsFailed());
+			console.log(e);
+		}
+	};
+};
+
+export const fetchAllBillsSuccess = (data) => ({
+	type: actionTypes.FETCH_ALL_BILL_SUCCESS,
+	bills: data
+});
+
+export const fetchAllBillsFailed = () => ({
+	type: actionTypes.FETCH_ALL_BILL_FAILED
 });

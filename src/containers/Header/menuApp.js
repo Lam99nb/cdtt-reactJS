@@ -16,5 +16,15 @@ export const adminMenu = [
 				link: '/system/admin-manage'
 			}
 		]
+	},
+	{
+		//hoá đơn
+		name: 'menu.system.bill',
+		menus: [
+			{
+				name: 'menu.system.manage-bill',
+				link: '/system/manage-bill'
+			}
+		]
 	}
 ];

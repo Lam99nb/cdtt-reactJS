@@ -20,8 +20,12 @@ import HomePage from './HomePage/HomePage';
 import Order from './HomePage/Order/Order';
 import About from './HomePage/About/About';
 import Cart from './HomePage/Cart/Cart';
+import BuyNow from './HomePage/BuyNow/BuyNow';
+import BillManage from '../../src/containers/System/Bill/BillManage';
 
 import ChiTietSP from './HomePage/ChiTietSP/ChiTietSP';
+import Search from './HomePage/Search/Search';
+import Blogs from './HomePage/Blogs/Blogs';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 
@@ -63,6 +67,10 @@ class App extends Component {
 								<Route path={path.ORDER} component={Order} />
 								<Route path={path.ABOUT} component={About} />
 								<Route path={path.CART} component={Cart} />
+								<Route path="/buy-now" component={BuyNow} />
+								<Route path="/bill" component={BillManage} />
+								<Route path={path.SEARCH} component={Search} />
+								<Route path="/blogs" component={Blogs} />
 							</Switch>
 						</span>
 

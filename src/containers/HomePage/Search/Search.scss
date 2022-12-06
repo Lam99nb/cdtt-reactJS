@@ -1,0 +1,46 @@
+.text-title {
+	border-bottom: 1px solid #f1efef;
+	width: 100%;
+	padding: 15px;
+	font-family: gmv_din_pro;
+}
+.container {
+	font-family: gmv_din_pro;
+
+	.text-result {
+		font-size: 31px;
+		width: 100%;
+		text-align: center;
+		padding: 24px 0;
+	}
+	.product-item {
+		margin: 13px 0;
+		.product-img {
+			height: 430px;
+			width: 100%;
+
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			transition: transform .2s;
+			margin: 0 auto;
+		}
+		.product-img:hover {
+			-ms-transform: scale(1.15); /* IE 9 */
+			-webkit-transform: scale(1.15); /* Safari 3-8 */
+			transform: scale(1.15);
+		}
+
+		.item-title {
+			font-size: 17px;
+			color: #8a8a8f;
+			text-transform: uppercase;
+			text-align: center;
+		}
+		.item-price {
+			font-weight: 600;
+			font-size: 20px;
+			text-align: center;
+		}
+	}
+}

@@ -7,7 +7,8 @@ export const path = {
 	DETAIL_PRODUCT: '/detail-product/:id',
 	ORDER: '/order',
 	ABOUT: '/about',
-	CART: '/cart'
+	CART: '/cart',
+	SEARCH: '/search/:q'
 };
 
 export const languages = {

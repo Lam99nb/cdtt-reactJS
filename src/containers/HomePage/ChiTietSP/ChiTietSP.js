@@ -41,7 +41,7 @@ class ChiTietSP extends Component {
 			count: 1,
 			detailProduct: {},
 			sizeRadio: '',
-			colorRadio: '',
+			colorRadio: ''
 		};
 	}
 
@@ -88,18 +88,18 @@ class ChiTietSP extends Component {
 		}
 	}
 
-	onChangeSizeRadio = e => {
+	onChangeSizeRadio = (e) => {
 		e.preventDefault();
 		this.setState({
 			sizeRadio: e.target.value
-		})
-	}
-	onChangeColorRadio = e => {
+		});
+	};
+	onChangeColorRadio = (e) => {
 		e.preventDefault();
 		this.setState({
 			colorRadio: e.target.value
-		})
-	}
+		});
+	};
 
 	addProdutToCart = () => {
 		const { detailProduct } = this.state;
@@ -112,17 +112,17 @@ class ChiTietSP extends Component {
 		let productInCart = productInCartString ? JSON.parse(productInCartString) : [];
 
 		let listItem = productInCart;
-		if (productInCart && productInCart.find(x => x.id === detailProduct.id)) {
-			// san pham da co trong gio hang 
+		if (productInCart && productInCart.find((x) => x.id === detailProduct.id)) {
+			// san pham da co trong gio hang
 			// => cap nhat thong tin moi
-			productInCart = productInCart.map(x => x.id === detailProduct.id ? detailProduct : x)
+			productInCart = productInCart.map((x) => (x.id === detailProduct.id ? detailProduct : x));
 			listItem = productInCart;
 		} else {
-			listItem.push(detailProduct)
+			listItem.push(detailProduct);
 		}
 		localStorage.setItem(KEY_PRODUCT_CART, JSON.stringify(listItem));
-		alert('Thêm vào giỏ hàng thành công!');	
-	}
+		alert('Thêm vào giỏ hàng thành công!');
+	};
 
 	render() {
 		let count = this.state.count;
@@ -292,17 +292,15 @@ class ChiTietSP extends Component {
 									</div>
 								</div>
 								<div className="btn-group">
-									<button
-										className="add-cart-btn"
-										type='button'
-										onClick={this.addProdutToCart}
-									>Thêm vào giỏ</button>
+									<button className="add-cart-btn" type="button" onClick={this.addProdutToCart}>
+										Thêm vào giỏ
+									</button>
 									<button
 										className="buy-now-btn"
 										// onClick={() => this.changeState()}
 										type="button"
 									>
-										<Link to="/order" style={{ decoration: 'none', color: '#fff' }}>
+										<Link to="/buy-now" style={{ decoration: 'none', color: '#fff' }}>
 											Mua ngay
 										</Link>
 									</button>

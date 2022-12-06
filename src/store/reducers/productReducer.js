@@ -4,7 +4,8 @@ const initialState = {
 	category: [],
 	size: [],
 	products: [],
-	topProduct: []
+	topProduct: [],
+	resultsProduct: []
 };
 
 const productReducer = (state = initialState, action) => {
@@ -54,6 +55,18 @@ const productReducer = (state = initialState, action) => {
 			};
 		case actionTypes.FETCH_TOP_PRODUCT_FAILED:
 			state.topProduct = [];
+
+			return {
+				...state
+			};
+		case actionTypes.FETCH_PRODUCT_RESULTS_SUCCESS:
+			state.resultsProduct = action.resultsProduct;
+
+			return {
+				...state
+			};
+		case actionTypes.FETCH_PRODUCT_RESULTS_FAILED:
+			state.resultsProduct = [];
 
 			return {
 				...state

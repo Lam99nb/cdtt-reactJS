@@ -4,8 +4,8 @@ const createNewProductService = (data) => {
 	return axios.post('/api/create-new-product', data);
 };
 
-const getAllProducts = (inputId) => {
-	return axios.get(`/api/get-all-product?id=${inputId}`);
+const getAllProducts = (inputId, category) => {
+	return axios.get(`/api/get-all-product?id=${inputId}&category=${category}`);
 };
 
 const deleteProductService = (productID) => {
@@ -27,11 +27,15 @@ const getTopProductHomeService = (limit) => {
 const getDetailProduct = (inputId) => {
 	return axios.get(`/api/get-detail-product-by-id?id=${inputId}`);
 };
+const getResultProducts = (search) => {
+	return axios.get(`/api/get-all-product?search=${search}`);
+};
 export {
 	createNewProductService,
 	getAllProducts,
 	deleteProductService,
 	editProductService,
 	getTopProductHomeService,
-	getDetailProduct
+	getDetailProduct,
+	getResultProducts
 };

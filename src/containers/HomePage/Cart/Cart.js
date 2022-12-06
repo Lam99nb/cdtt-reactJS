@@ -5,6 +5,8 @@ import './Cart.scss';
 import image_cart from '../../../assets/images/somihoanhithietkeSM12982.jpg';
 import image_cart2 from '../../../assets/images/CHÂN VÁY HỌA TIẾT Z08832.webp';
 import { KEY_PRODUCT_CART } from '../../../utils/constant';
+import { Link} from 'react-router-dom';
+
 
 import HomeHeader from '../HomeHeader';
 import HomeFooter from '../HomeFooter';
@@ -55,7 +57,19 @@ class Cart extends Component {
 
 		localStorage.setItem(KEY_PRODUCT_CART, JSON.stringify(listProduct));
 	}
+	deleteProduct = (event, key) => {
+		let listUpDateProduct = JSON.parse(localStorage.getItem(KEY_PRODUCT_CART) ?? '[]');
+		console.log('key index: ', key);
+		listUpDateProduct.splice(key, 1);
+		this.setState({ 
+			listProduct: listUpDateProduct
+			
+		});
+		localStorage.setItem(KEY_PRODUCT_CART, JSON.stringify(listUpDateProduct))
 
+
+	}
+	
 	updateTotalMoney = () => {
 		let listProduct = JSON.parse(localStorage.getItem(KEY_PRODUCT_CART) ?? '[]');
 		this.setState({ listProduct }, () => {
@@ -77,8 +91,11 @@ class Cart extends Component {
 			this.setState({ count });
 		});
 	}
+	
+	
 
 	render() {
+		console.log('check list product',this.state.listProduct);
 		return (
 			<React.Fragment>
 				<HomeHeader />
@@ -93,8 +110,9 @@ class Cart extends Component {
 									<th>Số lượng</th>
 									<th>Giá</th>
 								</tr>
+								
 								{
-									this.state.listProduct.map(x => {
+									this.state.listProduct.map((x , key ) => {
 										return (
 											<tr>
 												<td class="image-product-cart">
@@ -102,9 +120,12 @@ class Cart extends Component {
 												</td>
 
 												<td>
-													<p>Váy hoa thiết kế</p>
-													<div className="delete-btn">
+													<p>{x.productName}</p>
+													<div className="version">
+
 														Phiên bản: {x.size} / {x.color}<br />
+													</div>
+													<div className="delete-btn" onClick={(event) => this.deleteProduct(event, key )}  key = {key}>
 														Xoá
 													</div>
 												</td>
@@ -133,36 +154,7 @@ class Cart extends Component {
 									})
 								}
 
-								{/* <tr>
-									<td class="image-product-cart">
-										<img class="image-product" src={image_cart2} />
-									</td>
-
-									<td>
-										<p>Đầm hoa nhí</p>
-										<div className="delete-btn">
-											Phiên bản: Size M / Trắng <br />
-											Thương hiệu SAM <br /> Xoá
-										</div>
-									</td>
-									<td>
-										<div className="select-qty">
-											<div>
-												<button onClick={() => this.decrementCount()} type="button">
-													-
-												</button>
-											</div>
-
-											<div className="number">{count}</div>
-											<div>
-												<button onClick={() => this.incrementCount()} type="button">
-													+
-												</button>
-											</div>
-										</div>{' '}
-									</td>
-									<td>970.000₫</td>
-								</tr> */}
+								
 							</table>
 						</div>
 						<div className="cart-row">
@@ -184,7 +176,8 @@ class Cart extends Component {
 									Cập nhật
 								</button>
 								<button type="button" class="btn  btn-pay">
-									Thanh toán
+									<Link to="/order" style={{color: '#fff'}}>Thanh toán</Link>
+									
 								</button>
 							</div>
 						</div>

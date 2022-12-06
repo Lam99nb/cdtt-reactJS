@@ -176,7 +176,7 @@ class AdminManage extends Component {
 
 		return (
 			<div className="container">
-				<div className=" title text-center">Quản lý Admin</div>
+				<div className=" title text-center">Quản lý Người dùng</div>
 				{/* <div>{isGetGenders === true ? 'Loading gender' : ''}</div> */}
 				<form>
 					<div className="form-row">

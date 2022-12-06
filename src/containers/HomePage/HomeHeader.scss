@@ -1,7 +1,7 @@
 .home-header-container {
 	height: 96px;
 	width: 100%;
-	border-bottom: 1px solid #efeff4;
+
 	box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 	position: sticky;
 	top: 0;
@@ -68,23 +68,22 @@
 				justify-content: center;
 				width: 100%;
 				.search {
-					width: 33%;
-					padding-left: 42px;
-					.icon {
-						font-size: 23px;
-						cursor: pointer;
-						position: relative;
-					}
+					// width: 33%;
+					// padding-left: 42px;
+					// .icon {
+					// 	font-size: 23px;
+					// 	cursor: pointer;
+					// 	position: relative;
+					// }
 
-					.search-input {
-						position: absolute;
-						padding-top: 12px;
-						display: none;
-					}
+					// .search-input {
+					// 	position: absolute;
+					// 	padding-top: 12px;
+					// }
 
-					.icon:hover + .search-input {
-						display: block;
-					}
+					// .icon:hover + .search-input {
+					// 	display: block;
+					// }
 				}
 				.user {
 					width: 33%;
@@ -98,7 +97,7 @@
 					}
 				}
 				.cart {
-					width: 33%;
+					// width: 33%;
 					display: flex;
 					align-items: center;
 					cursor: pointer;

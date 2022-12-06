@@ -6,7 +6,8 @@ import {
 	getAllProducts,
 	deleteProductService,
 	editProductService,
-	getTopProductHomeService
+	getTopProductHomeService,
+	getResultProducts
 } from '../../services/productService';
 import { toast } from 'react-toastify';
 
@@ -197,3 +198,34 @@ export const fetchTopProduct = () => {
 		}
 	};
 };
+// search
+
+export const fetchProductResults = (data) => {
+	return async (dispatch, getState) => {
+		try {
+			let res = await getResultProducts(data);
+			console.log('check product fetch results', res);
+			if (res && res.errCode === 0) {
+				dispatch(fetchResultProductsSuccess(res.product));
+				console.log('check fetchAllProductsSuccess', res.product);
+			} else {
+				toast.error('Fetch sản phẩm không thành công!');
+				dispatch(fetchResultProductsFailed());
+				console.log(res.errCode);
+			}
+		} catch (e) {
+			toast.error('Fetch sản phẩm không thành công!');
+
+			dispatch(fetchResultProductsFailed());
+			console.log(e);
+		}
+	};
+};
+export const fetchResultProductsSuccess = (data) => ({
+	type: actionTypes.FETCH_PRODUCT_RESULTS_SUCCESS,
+	resultsProduct: data
+});
+
+export const fetchResultProductsFailed = () => ({
+	type: actionTypes.FETCH_PRODUCT_RESULTS_FAILED
+});

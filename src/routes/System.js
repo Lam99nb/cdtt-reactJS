@@ -4,6 +4,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
 import ProductManage from '../containers/System/Product/ProductManage';
 import AdminManage from '../containers/System/Admin/AdminManage';
+import BillManage from '../../src/containers/System/Bill/BillManage';
+
 import Header from '../containers/Header/Header';
 class System extends Component {
 	render() {
@@ -17,6 +19,7 @@ class System extends Component {
 							<Route path="/system/user-manage" component={UserManage} />
 							<Route path="/system/product-manage" component={ProductManage} />
 							<Route path="/system/admin-manage" component={AdminManage} />
+							<Route path="/system/manage-bill" component={BillManage} />
 
 							<Route
 								component={() => {
